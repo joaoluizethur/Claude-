@@ -179,8 +179,7 @@ def sfx(name, t_out, db_gain):
     j = min(n, i + len(x))
     mix[i:j] += x[:j - i] * 10 ** (db_gain / 20)
 
-SFX = [('impact', to_out(16.55), -14),
-       ('whoosh', to_out(17.81) - 0.14, -14), ('impact', to_out(29.65), -13)]
+SFX = [('whoosh', to_out(17.81) - 0.14, -14)]
 for name, t, g in SFX:
     sfx(name, t, g)
 f = int(0.3 * SR)

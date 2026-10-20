@@ -11,7 +11,7 @@
   },
   "cortar_silencios": "sim, agressivo (jump cuts)",
   "trilha": "escolhe uma pra mim",
-  "sfx": "so em momentos de impacto (impact/whoosh) - SEM o pop/\"poc\" nas legendas",
+  "sfx": "apenas whoosh em viradas de assunto - SEM pop/\"poc\" e SEM impactos graves",
   "color_grade": "NENHUM (cor original do video) - usuario pediu pra tirar o filtro frio",
   "referencia": "https://www.instagram.com/reel/DepyXBvibRI/",
   "paleta_marca": [
