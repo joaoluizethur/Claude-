@@ -29,7 +29,10 @@
     "grade_frio": "DESATIVADO por pedido do usuario. build.py: GRADE = False",
     "audio": "voz HPF 80Hz + comp 3:1 -18dB, -16 LUFS; trilha procedural -22 LUFS com ducking -8dB; SFX so em impacto (-13 a -16dB)",
     "transcricao": "Whisper turbo (sherpa-onnx, baixado do GitHub) em fatias curtas; HuggingFace bloqueado neste ambiente",
-    "export": "H.264 CRF18 slow yuv420p 30fps, AAC 320k 48k, faststart"
+    "export": "H.264 CRF18 slow yuv420p 30fps, AAC 320k 48k, faststart",
+    "pipeline": "pipeline/plan.py (trechos + frases) -> config.json (legendas revisadas) -> pipeline/build2.py (renderiza corte a corte, evita estouro de memoria em HEVC 1080p)",
+    "videos_longos": "video longo e condensado para 30-60s mantendo o roteiro (gancho, mito, virada, dicas, fechamento, CTA falado); remover vinheta do CapCut no fim",
+    "envio_videos_grandes": "usuario envia >30MB via GitHub Releases do repo joaoluizethur/Claude- (repo publico)"
   },
   "cta_final": "\"ME SIGA PARA MAIS\" (\"ME SIGA\" em #86C6F0), caixa #242424, slide de baixo + fade 0.5s logo apos a ultima fala; ultimo frame congelado ~2.3s. build.py: CTA / TAIL"
 }

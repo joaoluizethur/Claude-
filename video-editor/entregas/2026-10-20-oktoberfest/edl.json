@@ -1,0 +1,292 @@
+{
+ "shots": [
+  [
+   0.3333333333333333,
+   2.533333333333333,
+   "T"
+  ],
+  [
+   9.533333333333333,
+   10.333333333333334,
+   "T"
+  ],
+  [
+   10.466666666666667,
+   12.866666666666667,
+   "W"
+  ],
+  [
+   15.0,
+   17.533333333333335,
+   "W"
+  ],
+  [
+   17.8,
+   18.7,
+   "T"
+  ],
+  [
+   20.533333333333335,
+   21.866666666666667,
+   "T"
+  ],
+  [
+   22.2,
+   25.6,
+   "T"
+  ],
+  [
+   36.86666666666667,
+   38.06666666666667,
+   "W"
+  ],
+  [
+   38.53333333333333,
+   41.8,
+   "W"
+  ],
+  [
+   42.2,
+   43.266666666666666,
+   "T"
+  ],
+  [
+   62.43333333333333,
+   65.36666666666666,
+   "T"
+  ],
+  [
+   65.7,
+   66.26666666666667,
+   "W"
+  ],
+  [
+   66.33333333333333,
+   67.83333333333333,
+   "W"
+  ],
+  [
+   67.9,
+   68.33333333333333,
+   "W"
+  ],
+  [
+   68.46666666666667,
+   71.06666666666666,
+   "T"
+  ],
+  [
+   71.46666666666667,
+   74.26666666666667,
+   "W"
+  ],
+  [
+   78.53333333333333,
+   79.23333333333333,
+   "T"
+  ],
+  [
+   79.3,
+   80.56666666666666,
+   "T"
+  ],
+  [
+   80.66666666666667,
+   82.53333333333333,
+   "T"
+  ],
+  [
+   83.33333333333333,
+   84.4,
+   "W"
+  ],
+  [
+   84.5,
+   86.73333333333333,
+   "W"
+  ],
+  [
+   93.6,
+   94.6,
+   "T"
+  ],
+  [
+   95.33333333333333,
+   96.4,
+   "T"
+  ],
+  [
+   106.16666666666667,
+   109.3,
+   "T"
+  ],
+  [
+   121.53333333333333,
+   124.83333333333333,
+   "W"
+  ],
+  [
+   145.33333333333334,
+   147.73333333333332,
+   "T"
+  ],
+  [
+   147.8,
+   149.36666666666667,
+   "T"
+  ],
+  [
+   159.36666666666667,
+   160.53333333333333,
+   "W"
+  ],
+  [
+   160.6,
+   164.4,
+   "W"
+  ]
+ ],
+ "total_v": 56.299999999999955,
+ "cues": [
+  [
+   0.0,
+   "GURIZADA, ESTAMOS EM ÉPOCA DE OKTOBERFEST"
+  ],
+  [
+   2.2,
+   "MUITO CHOPE,"
+  ],
+  [
+   3.0,
+   "MUITA COMIDA TÍPICA E MUITA ROUPA TÍPICA TAMBÉM"
+  ],
+  [
+   5.4,
+   "SERÁ QUE DÁ PRA APROVEITAR ISSO TUDO E MESMO ASSIM"
+  ],
+  [
+   7.93,
+   "TER RESULTADOS?"
+  ],
+  [
+   8.83,
+   "MUITAS PESSOAS ACHAM"
+  ],
+  [
+   10.17,
+   "QUE AO SAIR DA ROTINA"
+  ],
+  [
+   11.48,
+   "PRA IR PRA UMA FESTA"
+  ],
+  [
+   12.13,
+   "PERDE TUDO QUE CONQUISTOU"
+  ],
+  [
+   13.58,
+   "SÓ QUE A VERDADE É OUTRA"
+  ],
+  [
+   14.77,
+   "QUANDO TU TEM UM DIRECIONAMENTO CORRETO"
+  ],
+  [
+   16.92,
+   "NO TEU DIA A DIA,"
+  ],
+  [
+   18.03,
+   "TU NÃO PERDE NENHUM RESULTADO"
+  ],
+  [
+   19.11,
+   "O QUE MUDA SÃO OS CUIDADOS,"
+  ],
+  [
+   20.81,
+   "E ELES SÃO SIMPLES"
+  ],
+  [
+   22.04,
+   "PRIMEIRO, SE HIDRATE BASTANTE"
+  ],
+  [
+   24.1,
+   "E COMA DE PREFERÊNCIA"
+  ],
+  [
+   25.12,
+   "UMA BOA FONTE DE PROTEÍNA"
+  ],
+  [
+   26.05,
+   "ANTES DE SAIR DE CASA"
+  ],
+  [
+   27.14,
+   "CHEGAR COM FOME"
+  ],
+  [
+   27.95,
+   "É O QUE TE LEVA ÀS PIORES ESCOLHAS"
+  ],
+  [
+   29.94,
+   "SEGUNDO, FAÇA BOAS ESCOLHAS"
+  ],
+  [
+   31.9,
+   "ESCOLHAS INTELIGENTES DURANTE A FESTA"
+  ],
+  [
+   33.77,
+   "SE FOR BEBER,"
+  ],
+  [
+   34.84,
+   "INTERCALE UM COPO DE ÁGUA ENTRE OS CHOPES"
+  ],
+  [
+   37.08,
+   "E TERCEIRO,"
+  ],
+  [
+   38.07,
+   "CUIDE DO SEU SONO"
+  ],
+  [
+   39.13,
+   "E O MAIS IMPORTANTE:"
+  ],
+  [
+   40.46,
+   "SEM EXTREMISMO NEM ANTES NEM DEPOIS"
+  ],
+  [
+   42.27,
+   "NO DIA SEGUINTE, VOLTE PARA A ROTINA"
+  ],
+  [
+   44.27,
+   "COMPENSAÇÃO NÃO EXISTE"
+  ],
+  [
+   45.57,
+   "EVOLUIR NÃO EXIGE ABRIR MÃO DA TUA VIDA"
+  ],
+  [
+   47.97,
+   "EXIGE DIRECIONAMENTO"
+  ],
+  [
+   49.54,
+   "O LINK DA MINHA BIO"
+  ],
+  [
+   50.7,
+   "É O PRIMEIRO PASSO PARA CONSTRUIRMOS ISSO JUNTOS"
+  ]
+ ]
+}
