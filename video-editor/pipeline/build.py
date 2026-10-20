@@ -14,7 +14,9 @@ def fr(x):
 SHOTS = [(2.50, 4.20, 'T'), (4.30, 6.50, 'W'), (6.80, 11.46, 'T'), (11.74, 12.61, 'W'),
          (12.71, 17.62, 'T'), (17.81, 21.58, 'W'), (21.86, 23.58, 'T'), (23.64, 27.09, 'W'),
          (27.34, 29.25, 'T'), (29.57, 30.85, 'W')]
-SHOTS = [(fr(a), fr(b), z) for a, b, z in SHOTS]
+# 'cru' = raw/authentic: no punch-in framing, captions just cut on/off
+STYLE = 'cru'
+SHOTS = [(fr(a), fr(b), 'W' if STYLE == 'cru' else z) for a, b, z in SHOTS]
 ZOOM = 1.12
 CROP_T = (round(SRC_W / ZOOM / 2) * 2, round(SRC_H / ZOOM / 2) * 2)
 CROP_T_XY = (round((SRC_W - CROP_T[0]) / 2), 26)  # keeps the question card inside the frame
@@ -87,6 +89,7 @@ def srt_ts(t):
     ms = int(round(t * 1000))
     return f'{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d},{ms % 1000:03d}'
 
+ANIM = '\\fad(60,0)\\fscx90\\fscy90\\t(0,110,\\fscx100\\fscy100)'
 HL, BASE = '&H00F0C686&', '&H00EBEBEB&'
 ass = [
     '[Script Info]', 'ScriptType: v4.00+', f'PlayResX: {W}', f'PlayResY: {H}', 'WrapStyle: 2', 'ScaledBorderAndShadow: yes', '',
@@ -104,7 +107,7 @@ for i, (s, text, hl) in enumerate(CUES):
     for line in wrapped:
         lines.append(' '.join(f'{{\\c{HL}}}{w}{{\\c{BASE}}}' if w in hl else w for w in line))
     body = '\\N'.join(lines)
-    ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}\\fad(60,0)\\fscx90\\fscy90\\t(0,110,\\fscx100\\fscy100)}}{body}')
+    ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}{"" if STYLE == "cru" else ANIM}}}{body}')
     srt.append(f'{i + 1}\n{srt_ts(t0)} --> {srt_ts(t1)}\n{text.capitalize()}\n')
 open(f'{P}/legendas.ass', 'w').write('\n'.join(ass) + '\n')
 open(f'{P}/legendas.srt', 'w').write('\n'.join(srt))

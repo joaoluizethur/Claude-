@@ -2,7 +2,7 @@
   "plataforma": "Reels/TikTok/Shorts 9:16 (1080x1920)",
   "duracao_alvo": "30-60s",
   "ritmo": "dinamico - corte a cada 3-5s",
-  "estilo_visual": "cru/autentico - quase sem efeito",
+  "estilo_visual": "cru/autentico (PADRAO FIXO) - enquadramento original sem punch-in/zoom, legenda entra e sai seca sem animacao, sem transicoes; jump cuts, legenda, grade, trilha e SFX seguem as outras respostas",
   "legendas": "frase por frase, centralizada",
   "cores_legenda": {
     "principal": "#EBEBEB",
@@ -23,8 +23,8 @@
   "fonte": "Montserrat Black",
   "aprendizados": {
     "fonte_legenda": "Montserrat Black, caixa alta, tamanho 96 (reduz automaticamente para caber na safe zone), contorno #242424 8px + sombra",
-    "legenda_posicao": "centro em y=1498 (78%), pop-in 90%->100% em 110ms",
-    "enquadramento": "alterna aberto (1.0) e fechado (1.12) a cada corte; corte fechado ancorado no topo pra manter caixinha de pergunta no quadro",
+    "legenda_posicao": "centro em y=1498 (78%), sem animacao de entrada no estilo cru",
+    "enquadramento": "estilo cru: plano original em todos os cortes (sem alternar zoom). build.py: STYLE = \"cru\"",
     "logo": "centralizado no topo, ~230px de largura, 60% opacidade, sombra #242424",
     "grade_frio": "eq contrast 1.07 sat 0.88 + colorbalance rs-0.08 bs+0.09 rm-0.06 bm+0.07",
     "audio": "voz HPF 80Hz + comp 3:1 -18dB, -16 LUFS; trilha procedural -22 LUFS com ducking -8dB; SFX so em impacto (-13 a -16dB)",
