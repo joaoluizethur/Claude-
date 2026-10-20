@@ -14,9 +14,11 @@ def fr(x):
 SHOTS = [(2.50, 4.20, 'T'), (4.30, 6.50, 'W'), (6.80, 11.46, 'T'), (11.74, 12.61, 'W'),
          (12.71, 17.62, 'T'), (17.81, 21.58, 'W'), (21.86, 23.58, 'T'), (23.64, 27.09, 'W'),
          (27.34, 29.25, 'T'), (29.57, 30.85, 'W')]
-# 'cru' = raw/authentic: no punch-in framing, captions just cut on/off
-STYLE = 'cru'
-SHOTS = [(fr(a), fr(b), 'W' if STYLE == 'cru' else z) for a, b, z in SHOTS]
+# style switches (user defaults: alternating zoom on, static captions, no color grade)
+ZOOMS = True
+CAPTION_ANIM = False
+GRADE = False
+SHOTS = [(fr(a), fr(b), z if ZOOMS else 'W') for a, b, z in SHOTS]
 ZOOM = 1.12
 CROP_T = (round(SRC_W / ZOOM / 2) * 2, round(SRC_H / ZOOM / 2) * 2)
 CROP_T_XY = (round((SRC_W - CROP_T[0]) / 2), 26)  # keeps the question card inside the frame
@@ -107,7 +109,7 @@ for i, (s, text, hl) in enumerate(CUES):
     for line in wrapped:
         lines.append(' '.join(f'{{\\c{HL}}}{w}{{\\c{BASE}}}' if w in hl else w for w in line))
     body = '\\N'.join(lines)
-    ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}{"" if STYLE == "cru" else ANIM}}}{body}')
+    ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}{ANIM if CAPTION_ANIM else ""}}}{body}')
     srt.append(f'{i + 1}\n{srt_ts(t0)} --> {srt_ts(t1)}\n{text.capitalize()}\n')
 open(f'{P}/legendas.ass', 'w').write('\n'.join(ass) + '\n')
 open(f'{P}/legendas.srt', 'w').write('\n'.join(srt))
@@ -121,7 +123,7 @@ fc.append(''.join(f'[v{i}]' for i in range(len(SHOTS))) + f'concat=n={len(SHOTS)
 grade = ('eq=contrast=1.07:saturation=0.88:gamma=0.98,'
          'colorbalance=rs=-0.08:bs=0.09:rm=-0.06:gm=0.0:bm=0.07:rh=-0.03:bh=0.04,'
          "curves=all='0/0.02 0.25/0.22 0.75/0.79 1/0.98'")
-fc.append(f"[cat]{grade},ass={P}/legendas.ass:fontsdir={E}/subfonts[sub]")
+fc.append(f"[cat]{grade + ',' if GRADE else ''}ass={P}/legendas.ass:fontsdir={E}/subfonts[sub]")
 fc.append(f'[sub][1:v]overlay=x=(W-w)/2:y=170-h/2:format=auto,fade=t=in:st=0:d=0.3,fade=t=out:st={TOTAL - 0.3:.3f}:d=0.3,format=yuv420p[vout]')
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{P}/src.mov', '-i', f'{P}/logo_ready.png',
                 '-filter_complex', ';'.join(fc), '-map', '[vout]', '-an',
