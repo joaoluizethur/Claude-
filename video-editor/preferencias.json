@@ -1,0 +1,16 @@
+{
+  "plataforma": "Reels/TikTok/Shorts 9:16 (1080x1920)",
+  "duracao_alvo": "30-60s",
+  "ritmo": "dinamico - corte a cada 3-5s",
+  "estilo_visual": "cru/autentico - quase sem efeito",
+  "legendas": "frase por frase, centralizada",
+  "cores_legenda": {"principal": "#EBEBEB", "destaque": "#86C6F0", "contorno": "#242424"},
+  "cortar_silencios": "sim, agressivo (jump cuts)",
+  "trilha": "escolhe uma pra mim",
+  "sfx": "so em momentos de impacto",
+  "color_grade": "frio/tech",
+  "referencia": "https://www.instagram.com/reel/DepyXBvibRI/",
+  "paleta_marca": ["#EBEBEB", "#242424", "#86C6F0"],
+  "logo": "video-editor/assets/logo-et-team.png",
+  "fonte": "Montserrat Black"
+}
