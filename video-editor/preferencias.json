@@ -11,7 +11,7 @@
   },
   "cortar_silencios": "sim, agressivo (jump cuts)",
   "trilha": "escolhe uma pra mim",
-  "sfx": "so em momentos de impacto",
+  "sfx": "so em momentos de impacto (impact/whoosh) - SEM o pop/\"poc\" nas legendas",
   "color_grade": "NENHUM (cor original do video) - usuario pediu pra tirar o filtro frio",
   "referencia": "https://www.instagram.com/reel/DepyXBvibRI/",
   "paleta_marca": [
@@ -31,5 +31,5 @@
     "transcricao": "Whisper turbo (sherpa-onnx, baixado do GitHub) em fatias curtas; HuggingFace bloqueado neste ambiente",
     "export": "H.264 CRF18 slow yuv420p 30fps, AAC 320k 48k, faststart"
   },
-  "cta_final": "\"SEGUE A @ETHURTEAM PRA MAIS\" (handle em #86C6F0), caixa #242424, slide de baixo + fade 0.5s logo apos a ultima fala; ultimo frame congelado ~2.3s pra dar espaco. build.py: CTA / TAIL"
+  "cta_final": "\"ME SIGA PARA MAIS\" (\"ME SIGA\" em #86C6F0), caixa #242424, slide de baixo + fade 0.5s logo apos a ultima fala; ultimo frame congelado ~2.3s. build.py: CTA / TAIL"
 }

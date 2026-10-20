@@ -29,7 +29,7 @@ for a, b, _ in SHOTS:
     acc += b - a
 TOTAL = acc
 # CTA: last frame held so the end card has room; total lands near 30s
-CTA = ('SEGUE A', '@ETHURTEAM', 'PRA MAIS')
+CTA = ('ME SIGA', 'PARA MAIS')
 TAIL = 2.3
 TOTAL_V = TOTAL + TAIL
 SPEECH_END = 30.38
@@ -119,9 +119,9 @@ for i, (s, text, hl) in enumerate(CUES):
 cta_t0 = to_out(SPEECH_END) + 0.15
 ass.append(f'Style: Cta,Montserrat ET,78,{BASE},{BASE},&H00242424&,&H26242424&,0,0,0,0,100,100,1,0,3,26,0,5,108,108,0,1')
 ass.insert(ass.index('[Events]') - 1, ass.pop())
-cta = f'{CTA[0]} {{\\c{HL}}}{CTA[1]}{{\\c{BASE}}}\\N{CTA[2]}'
+cta = f'{{\\c{HL}}}{CTA[0]}{{\\c{BASE}}} {CTA[1]}'
 ass.append(f'Dialogue: 1,{ts(cta_t0)},{ts(TOTAL_V)},Cta,,0,0,0,,{{\\an5\\move(540,1600,540,1498,0,500)\\fad(500,0)}}{cta}')
-srt.append(f'{len(CUES) + 1}\n{srt_ts(cta_t0)} --> {srt_ts(TOTAL_V)}\nSegue a @ethurteam pra mais\n')
+srt.append(f'{len(CUES) + 1}\n{srt_ts(cta_t0)} --> {srt_ts(TOTAL_V)}\nMe siga para mais\n')
 open(f'{P}/legendas.ass', 'w').write('\n'.join(ass) + '\n')
 open(f'{P}/legendas.srt', 'w').write('\n'.join(srt))
 
@@ -179,7 +179,7 @@ def sfx(name, t_out, db_gain):
     j = min(n, i + len(x))
     mix[i:j] += x[:j - i] * 10 ** (db_gain / 20)
 
-SFX = [('pop', to_out(6.88), -16), ('impact', to_out(16.55), -14),
+SFX = [('impact', to_out(16.55), -14),
        ('whoosh', to_out(17.81) - 0.14, -14), ('impact', to_out(29.65), -13)]
 for name, t, g in SFX:
     sfx(name, t, g)
