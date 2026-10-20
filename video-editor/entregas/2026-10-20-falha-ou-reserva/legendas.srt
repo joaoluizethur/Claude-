@@ -55,5 +55,9 @@ E treinam muito longe da falha
 E acabam deixando resultados
 
 15
-00:00:25,317 --> 00:00:26,533
+00:00:25,317 --> 00:00:26,197
 Na mesa
+
+16
+00:00:26,197 --> 00:00:29,100
+Segue a @ethurteam pra mais

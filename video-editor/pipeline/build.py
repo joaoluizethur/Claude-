@@ -13,7 +13,7 @@ def fr(x):
 # (src_start, src_end, framing) — every boundary is a silence cut (0.08s padding kept)
 SHOTS = [(2.50, 4.20, 'T'), (4.30, 6.50, 'W'), (6.80, 11.46, 'T'), (11.74, 12.61, 'W'),
          (12.71, 17.62, 'T'), (17.81, 21.58, 'W'), (21.86, 23.58, 'T'), (23.64, 27.09, 'W'),
-         (27.34, 29.25, 'T'), (29.57, 30.85, 'W')]
+         (27.34, 29.25, 'T'), (29.57, 31.13, 'W')]
 # style switches (user defaults: alternating zoom on, static captions, no color grade)
 ZOOMS = True
 CAPTION_ANIM = False
@@ -28,6 +28,11 @@ for a, b, _ in SHOTS:
     out_starts.append(acc)
     acc += b - a
 TOTAL = acc
+# CTA: last frame held so the end card has room; total lands near 30s
+CTA = ('SEGUE A', '@ETHURTEAM', 'PRA MAIS')
+TAIL = 2.3
+TOTAL_V = TOTAL + TAIL
+SPEECH_END = 30.38
 
 def to_out(s):
     for (a, b, _), o in zip(SHOTS, out_starts):
@@ -103,7 +108,7 @@ ass = [
 srt = []
 for i, (s, text, hl) in enumerate(CUES):
     t0 = to_out(s)
-    t1 = to_out(CUES[i + 1][0]) if i + 1 < len(CUES) else TOTAL
+    t1 = to_out(CUES[i + 1][0]) if i + 1 < len(CUES) else to_out(SPEECH_END) + 0.15
     lines = []
     wrapped, fs = wrap(text)
     for line in wrapped:
@@ -111,6 +116,12 @@ for i, (s, text, hl) in enumerate(CUES):
     body = '\\N'.join(lines)
     ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}{ANIM if CAPTION_ANIM else ""}}}{body}')
     srt.append(f'{i + 1}\n{srt_ts(t0)} --> {srt_ts(t1)}\n{text.capitalize()}\n')
+cta_t0 = to_out(SPEECH_END) + 0.15
+ass.append(f'Style: Cta,Montserrat ET,78,{BASE},{BASE},&H00242424&,&H26242424&,0,0,0,0,100,100,1,0,3,26,0,5,108,108,0,1')
+ass.insert(ass.index('[Events]') - 1, ass.pop())
+cta = f'{CTA[0]} {{\\c{HL}}}{CTA[1]}{{\\c{BASE}}}\\N{CTA[2]}'
+ass.append(f'Dialogue: 1,{ts(cta_t0)},{ts(TOTAL_V)},Cta,,0,0,0,,{{\\an5\\move(540,1600,540,1498,0,500)\\fad(500,0)}}{cta}')
+srt.append(f'{len(CUES) + 1}\n{srt_ts(cta_t0)} --> {srt_ts(TOTAL_V)}\nSegue a @ethurteam pra mais\n')
 open(f'{P}/legendas.ass', 'w').write('\n'.join(ass) + '\n')
 open(f'{P}/legendas.srt', 'w').write('\n'.join(srt))
 
@@ -119,12 +130,12 @@ fc = []
 for i, (a, b, z) in enumerate(SHOTS):
     crop = f'crop={CROP_T[0]}:{CROP_T[1]}:{CROP_T_XY[0]}:{CROP_T_XY[1]},' if z == 'T' else ''
     fc.append(f'[0:v]trim=start_frame={round(a * FPS)}:end_frame={round(b * FPS)},setpts=PTS-STARTPTS,{crop}scale={W}:{H}:flags=lanczos,setsar=1[v{i}]')
-fc.append(''.join(f'[v{i}]' for i in range(len(SHOTS))) + f'concat=n={len(SHOTS)}:v=1:a=0,fps={FPS}[cat]')
+fc.append(''.join(f'[v{i}]' for i in range(len(SHOTS))) + f'concat=n={len(SHOTS)}:v=1:a=0,fps={FPS},tpad=stop_mode=clone:stop={round(TAIL * FPS)}[cat]')
 grade = ('eq=contrast=1.07:saturation=0.88:gamma=0.98,'
          'colorbalance=rs=-0.08:bs=0.09:rm=-0.06:gm=0.0:bm=0.07:rh=-0.03:bh=0.04,'
          "curves=all='0/0.02 0.25/0.22 0.75/0.79 1/0.98'")
 fc.append(f"[cat]{grade + ',' if GRADE else ''}ass={P}/legendas.ass:fontsdir={E}/subfonts[sub]")
-fc.append(f'[sub][1:v]overlay=x=(W-w)/2:y=170-h/2:format=auto,fade=t=in:st=0:d=0.3,fade=t=out:st={TOTAL - 0.3:.3f}:d=0.3,format=yuv420p[vout]')
+fc.append(f'[sub][1:v]overlay=x=(W-w)/2:y=170-h/2:format=auto,fade=t=in:st=0:d=0.3,fade=t=out:st={TOTAL_V - 0.3:.3f}:d=0.3,format=yuv420p[vout]')
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{P}/src.mov', '-i', f'{P}/logo_ready.png',
                 '-filter_complex', ';'.join(fc), '-map', '[vout]', '-an',
                 '-c:v', 'libx264', '-crf', '18', '-preset', 'slow', '-pix_fmt', 'yuv420p', '-r', str(FPS),
@@ -140,7 +151,7 @@ for a, b, _ in SHOTS:
     seg[:f] *= np.linspace(0, 1, f)[:, None]
     seg[-f:] *= np.linspace(1, 0, f)[:, None]
     parts.append(seg)
-voice_raw = np.concatenate(parts)
+voice_raw = np.concatenate(parts + [np.zeros((int(round(TAIL * SR)), src.shape[1]), np.float32)])
 sf.write(f'{P}/voice_raw.wav', voice_raw, SR)
 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', f'{P}/voice_raw.wav', '-af',
                 'highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=8:release=160:makeup=1',

@@ -8,6 +8,7 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,Montserrat ET,96,&H00EBEBEB&,&H00EBEBEB&,&H00242424&,&H90000000&,0,0,0,0,100,100,1,0,1,8,4,5,108,108,0,1
+Style: Cta,Montserrat ET,78,&H00EBEBEB&,&H00EBEBEB&,&H00242424&,&H26242424&,0,0,0,0,100,100,1,0,3,26,0,5,108,108,0,1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -25,4 +26,5 @@ Dialogue: 0,0:00:18.21,0:00:19.92,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}NÃO SABE
 Dialogue: 0,0:00:19.92,0:00:21.86,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}QUANTAS REPETIÇÕES\NESTÃO NA {\c&H00F0C686&}RESERVA{\c&H00EBEBEB&}
 Dialogue: 0,0:00:21.86,0:00:23.39,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}E TREINAM MUITO\N{\c&H00F0C686&}LONGE{\c&H00EBEBEB&} {\c&H00F0C686&}DA{\c&H00EBEBEB&} {\c&H00F0C686&}FALHA{\c&H00EBEBEB&}
 Dialogue: 0,0:00:23.39,0:00:25.32,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}E ACABAM DEIXANDO\N{\c&H00F0C686&}RESULTADOS{\c&H00EBEBEB&}
-Dialogue: 0,0:00:25.32,0:00:26.53,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}{\c&H00F0C686&}NA{\c&H00EBEBEB&} {\c&H00F0C686&}MESA{\c&H00EBEBEB&}
+Dialogue: 0,0:00:25.32,0:00:26.20,Cap,,0,0,0,,{\an5\pos(540,1498)\fs96}{\c&H00F0C686&}NA{\c&H00EBEBEB&} {\c&H00F0C686&}MESA{\c&H00EBEBEB&}
+Dialogue: 1,0:00:26.20,0:00:29.10,Cta,,0,0,0,,{\an5\move(540,1600,540,1498,0,500)\fad(500,0)}SEGUE A {\c&H00F0C686&}@ETHURTEAM{\c&H00EBEBEB&}\NPRA MAIS
