@@ -32,7 +32,8 @@
     "export": "H.264 CRF18 slow yuv420p 30fps, AAC 320k 48k, faststart",
     "pipeline": "pipeline/plan.py (trechos + frases) -> config.json (legendas revisadas) -> pipeline/build2.py (renderiza corte a corte, evita estouro de memoria em HEVC 1080p)",
     "videos_longos": "video longo e condensado para 30-60s mantendo o roteiro (gancho, mito, virada, dicas, fechamento, CTA falado); remover vinheta do CapCut no fim",
-    "envio_videos_grandes": "usuario envia >30MB via GitHub Releases do repo joaoluizethur/Claude- (repo publico)"
+    "envio_videos_grandes": "usuario envia >30MB via GitHub Releases do repo joaoluizethur/Claude- (repo publico)",
+    "trilha_excecoes": "Oktoberfest (2026-10-20): polka bavara original (pipeline/gen_polka.py + FluidSynth) SO nesse video; padrao continua a trilha eletronica"
   },
   "cta_final": "\"ME SIGA PARA MAIS\" (\"ME SIGA\" em #86C6F0), caixa #242424, slide de baixo + fade 0.5s logo apos a ultima fala; ultimo frame congelado ~2.3s. build.py: CTA / TAIL"
 }

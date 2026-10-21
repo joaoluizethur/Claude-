@@ -145,6 +145,8 @@ voice = pyln.normalize.loudness(voice, meter.integrated_loudness(voice), -16.0)
 n = len(voice)
 music, _ = sf.read(f'{P}/music.wav', dtype='float32')
 music = pyln.normalize.loudness(music[:n], meter.integrated_loudness(music[:n]), -22.0)
+mf = int(2.0 * SR)
+music[-mf:] *= np.linspace(1, 0, mf)[:, None]
 env = librosa.feature.rms(y=voice.mean(1), frame_length=960, hop_length=480)[0]
 active = np.convolve((20 * np.log10(env + 1e-9) > -40).astype(float), np.ones(15) / 15, mode='same')
 gain = 10 ** (np.interp(np.arange(n) / SR, np.arange(len(active)) * 0.01, -8.0 * np.clip(active * 1.5, 0, 1)) / 20)
