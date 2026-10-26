@@ -16,7 +16,7 @@ def fr(x):
 
 keeps = [list(k) for k in json.load(open(f'{P}/plan.json'))['keeps']]
 keeps[-1][1] = C.get('last_end', keeps[-1][1])
-SHOTS, z, since = [], 'T', 0.0
+SHOTS, z, since = [], C.get('first_zoom', 'T'), 0.0
 for i, (a, b) in enumerate(keeps):
     if i and since >= MIN_HOLD:
         z, since = ('W' if z == 'T' else 'T'), 0.0
@@ -90,6 +90,7 @@ ass = [
 ]
 srt = []
 speech_end = to_out(C['speech_end']) + 0.15
+cta_t0 = to_out(C['cta_at']) if 'cta_at' in C else speech_end
 for i, (s, text, hl) in enumerate(CUES):
     t0 = to_out(s)
     t1 = to_out(CUES[i + 1][0]) if i + 1 < len(CUES) else speech_end
@@ -98,8 +99,8 @@ for i, (s, text, hl) in enumerate(CUES):
     ass.append(f'Dialogue: 0,{ts(t0)},{ts(t1)},Cap,,0,0,0,,{{\\an5\\pos(540,1498)\\fs{fs}{ANIM if CAPTION_ANIM else ""}}}{body}')
     srt.append(f'{i + 1}\n{srt_ts(t0)} --> {srt_ts(t1)}\n{text.capitalize()}\n')
 CTA = ('ME SIGA', 'PARA MAIS')
-ass.append(f'Dialogue: 1,{ts(speech_end)},{ts(TOTAL_V)},Cta,,0,0,0,,{{\\an5\\move(540,1600,540,1498,0,500)\\fad(500,0)}}{{\\c{HL}}}{CTA[0]}{{\\c{BASE}}} {CTA[1]}')
-srt.append(f'{len(CUES) + 1}\n{srt_ts(speech_end)} --> {srt_ts(TOTAL_V)}\nMe siga para mais\n')
+ass.append(f'Dialogue: 1,{ts(cta_t0)},{ts(TOTAL_V)},Cta,,0,0,0,,{{\\an5\\move(540,1600,540,1498,0,500)\\fad(500,0)}}{{\\c{HL}}}{CTA[0]}{{\\c{BASE}}} {CTA[1]}')
+srt.append(f'{len(CUES) + 1}\n{srt_ts(cta_t0)} --> {srt_ts(TOTAL_V)}\nMe siga para mais\n')
 open(f'{P}/legendas.ass', 'w').write('\n'.join(ass) + '\n')
 open(f'{P}/legendas.srt', 'w').write('\n'.join(srt))
 

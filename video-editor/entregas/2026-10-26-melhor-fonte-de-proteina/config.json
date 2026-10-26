@@ -1,0 +1,38 @@
+{
+ "src_size": [
+  1080,
+  1920
+ ],
+ "tight_y0": 90,
+ "first_zoom": "W",
+ "min_zoom_hold": 2.5,
+ "speech_end": 3.1,
+ "cta_at": 5.0,
+ "tail": 2.3,
+ "sfx": [
+  [
+   "whoosh",
+   3.45,
+   -14
+  ]
+ ],
+ "cues": [
+  [
+   0.62,
+   "QUAL A MELHOR FONTE DE PROTEÍNA?",
+   [
+    "PROTEÍNA?"
+   ]
+  ],
+  [
+   2.05,
+   "ESSA AQUI, Ó",
+   [
+    "ESSA",
+    "AQUI,",
+    "Ó"
+   ],
+   true
+  ]
+ ]
+}
